@@ -162,7 +162,7 @@
     .specialties-img-bg {
         position: absolute;
         inset: 0;
-        background-image: url('WhatsApp Image 2026-02-11 at 9.21.54 AM.jpeg');
+        background-image: url('WhatsApp%20Image%202026-02-11%20at%209.21.54%20AM.jpeg');
         background-size: cover;
         background-position: center;
         opacity: 0.35;
@@ -179,6 +179,21 @@
         background: rgba(255, 255, 255, 0.15);
         border-color: var(--brand-orange);
         transform: scale(1.02);
+    }
+
+    /* Custom Background Image Placeholders */
+    .branded-bg-placeholder {
+      background-image: url(''); /* PASTE YOUR IMAGE URL HERE */
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      position: relative;
+    }
+    .branded-bg-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.6); /* Adjust transparency here */
+      z-index: 0;
     }
   </style>
 </head>
@@ -282,8 +297,11 @@
       <div class="flex flex-col md:flex-row items-center gap-10 md:gap-16">
         <div class="w-full md:w-1/2 px-4 md:px-0 reveal">
           <div class="relative max-w-md mx-auto md:max-w-none">
-            <div class="bg-black rounded-3xl p-8 shadow-2xl flex items-center justify-center aspect-[4/3] overflow-hidden">
-                <img src="image_55dfe2.jpg" alt="Sudharsan Tiffin Centre Logo" class="max-h-full w-auto object-contain">
+            <!-- Full Story Left Side Background Placeholder -->
+            <div class="branded-bg-placeholder bg-black rounded-3xl p-8 shadow-2xl flex items-center justify-center aspect-[4/3] overflow-hidden">
+                <!-- Overlay to ensure the logo stands out when you add the background -->
+                <div class="branded-bg-overlay"></div>
+                <img src="sudharsan logo.jpeg" alt="Sudharsan Tiffin Centre Logo" class="relative z-10 max-h-full w-auto object-contain">
             </div>
             <div class="absolute -bottom-4 -right-4 w-32 h-32 md:w-48 md:h-48 bg-yellow-100 rounded-full -z-0"></div>
             <div class="absolute top-4 left-4 bg-white/90 backdrop-blur p-3 md:p-4 rounded-xl shadow-lg z-20">
@@ -371,10 +389,12 @@
 
         <!-- Tiffin Menu Right -->
         <div class="reveal">
-          <div class="bg-black text-white p-5 md:p-6 rounded-t-2xl flex items-center justify-between border-b-4 border-[var(--brand-orange)] shadow-lg">
-            <div class="flex items-center gap-4">
-              <div class="w-20 h-20 md:w-24 md:h-24 bg-white rounded-full p-0.5 shadow-xl logo-container overflow-hidden">
-                <img src="image_55dfe2.jpg" alt="Sudharsan Tiffin Centre Official Logo">
+          <!-- Branded Menu Header with Placeholder for Background -->
+          <div class="branded-bg-placeholder bg-black text-white p-5 md:p-6 rounded-t-2xl flex items-center justify-between border-b-4 border-[var(--brand-orange)] shadow-lg overflow-hidden">
+            <div class="branded-bg-overlay"></div>
+            <div class="flex items-center gap-4 relative z-10">
+              <div class="w-20 h-26 md:w-24 md:h-24 bg-white rounded-full p-1.0 shadow-xl logo-container overflow-hidden">
+                <img src="sudharsan logo.jpeg" alt="Sudharsan Tiffin Centre Official Logo">
               </div>
               <div>
                 <h3 class="text-xl md:text-2xl font-black uppercase tracking-tighter" data-key="m_hot_title">Sudharsan Tiffin Centre</h3>
@@ -443,8 +463,8 @@
   <!-- Contact Section with Slideshow -->
   <section id="contact" class="relative py-16 md:py-32 overflow-hidden flex items-center justify-center">
     <div class="contact-slide-wrapper">
-        <div class="contact-slide active" style="background-image: url('WhatsApp Image 2026-02-11 at 9.21.54 AM.jpeg');"></div>
-        <div class="contact-slide" style="background-image: url('WhatsApp Image 2026-02-11 at 9.21.54 AM (1).jpeg');"></div>
+        <div class="contact-slide active" style="background-image: url('sudharsan\ logo.jpeg');"></div>
+        <div class="contact-slide" style="background-image: url('sudharsan\ logo.jpeg');"></div>
     </div>
     <div class="contact-overlay"></div>
     <div class="relative z-10 max-w-xl w-full mx-auto px-4 reveal">
