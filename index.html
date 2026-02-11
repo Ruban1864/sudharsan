@@ -1,572 +1,799 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sudharsan Catering - Authentic Catering Since 2010</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poppins:wght@300;400;500;600;700&family=Noto+Sans+Tamil:wght@400;700&display=swap');
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Sudharsan Catering - Authentic Catering Since 2010</title>
 
-        :root {
-            --primary-gold: #D4AF37;
-            --deep-maroon: #800000;
-            --rich-black: #1a1a1a;
-        }
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
 
-        body {
-            font-family: 'Poppins', 'Noto Sans Tamil', sans-serif;
-            scroll-behavior: smooth;
-            -webkit-tap-highlight-color: transparent;
-        }
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Poppins:wght@300;400;500;600;700&family=Noto+Sans+Tamil:wght@400;700&display=swap" rel="stylesheet">
 
-        h1, h2, h3, .font-serif {
-            font-family: 'Playfair Display', 'Noto Sans Tamil', serif;
-        }
+  <!-- Font Awesome -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
 
-        .nav-link {
-            position: relative;
-            transition: color 0.3s ease;
-        }
+  <style>
+    :root {
+      --primary-gold: #D4AF37;
+      --deep-maroon: #800000;
+      --rich-black: #1a1a1a;
+      --menu-bg: #fffbf0;
+      --brand-orange: #F8A01A;
+    }
 
-        /* Responsive Underline for Desktop */
-        @media (min-width: 768px) {
-            .nav-link::after {
-                content: '';
-                position: absolute;
-                width: 0;
-                height: 2px;
-                bottom: -4px;
-                left: 0;
-                background-color: var(--primary-gold);
-                transition: width 0.3s ease;
-            }
-            .nav-link:hover::after {
-                width: 100%;
-            }
-        }
+    html, body {
+      max-width: 100%;
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+    }
 
-        .lang-btn.active {
-            background-color: var(--deep-maroon);
-            color: white;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
+    body {
+      font-family: 'Poppins', 'Noto Sans Tamil', sans-serif;
+      -webkit-tap-highlight-color: transparent;
+      padding-top: 5rem;
+    }
 
-        .whatsapp-float {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background-color: #25d366;
-            color: white;
-            width: 56px;
-            height: 56px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 28px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-            z-index: 100;
-            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
+    h1, h2, h3, .font-serif {
+      font-family: 'Playfair Display', 'Noto Sans Tamil', serif;
+    }
 
-        .whatsapp-float:active {
-            transform: scale(0.9);
-        }
+    .nav-link { position: relative; transition: color .25s ease; }
 
-        .hover-lift {
-            transition: all 0.3s ease;
-        }
+    @media (min-width: 768px) {
+      .nav-link::after {
+        content: '';
+        position: absolute;
+        width: 0;
+        height: 2px;
+        bottom: -4px;
+        left: 0;
+        background-color: var(--primary-gold);
+        transition: width .25s ease;
+      }
+      .nav-link:hover::after { width: 100%; }
+    }
 
-        @media (min-width: 1024px) {
-            .hover-lift:hover {
-                transform: translateY(-8px);
-                box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
-            }
-        }
+    .lang-btn.active, .lang-btn-mob.active {
+      background-color: var(--deep-maroon);
+      color: white;
+      box-shadow: 0 2px 6px rgba(0,0,0,.12);
+    }
 
-        .reveal {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: all 0.6s ease-out;
-        }
+    .whatsapp-float {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: #25d366;
+      color: white;
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      box-shadow: 0 6px 18px rgba(0,0,0,.18);
+      z-index: 60;
+      transition: transform .12s ease;
+    }
+    .whatsapp-float:active { transform: scale(.95); }
 
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
+    .hover-lift { transition: all .28s ease; }
+    @media (min-width:1024px) {
+      .hover-lift:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 20px 25px -5px rgba(0,0,0,0.12);
+      }
+    }
 
-        /* Menu Scrollbar Customization */
-        .menu-scroll::-webkit-scrollbar {
-            width: 4px;
-        }
-        .menu-scroll::-webkit-scrollbar-thumb {
-            background: #800000;
-            border-radius: 10px;
-        }
+    .reveal { opacity: 0; transform: translateY(14px); transition: all .6s ease-out; }
+    .reveal.is-visible { opacity: 1; transform: translateY(0); }
 
-        /* Prevent horizontal scroll on small devices */
-        html, body {
-            max-width: 100%;
-            overflow-x: hidden;
-        }
-    </style>
+    .menu-scroll::-webkit-scrollbar { width: 6px; }
+    .menu-scroll::-webkit-scrollbar-thumb { background: #800000; border-radius: 10px; }
+
+    .modal-backdrop { background: rgba(0,0,0,0.6); }
+    .z-70 { z-index: 70; }
+    .z-80 { z-index: 80; }
+
+    /* Pattern background for menu */
+    .menu-pattern {
+      background-color: var(--menu-bg);
+      background-image: radial-gradient(#ffeeba 1px, transparent 1px);
+      background-size: 20px 20px;
+    }
+
+    .logo-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    /* Veg Symbol */
+    .veg-symbol {
+      border: 1.5px solid #008000;
+      padding: 3px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: white;
+    }
+    .veg-symbol::after {
+      content: '';
+      width: 10px;
+      height: 10px;
+      background: #008000;
+      border-radius: 50%;
+    }
+
+    /* Contact Section Background Slide */
+    .contact-slide-wrapper {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+    .contact-slide {
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center;
+      opacity: 0;
+      transition: opacity 1.5s ease-in-out;
+    }
+    .contact-slide.active {
+      opacity: 1;
+    }
+    .contact-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.7);
+      z-index: 1;
+    }
+
+    /* Unique Specialties Background Design */
+    .specialties-container {
+        position: relative;
+        background: #111;
+        overflow: hidden;
+        border-radius: 2rem;
+    }
+    .specialties-img-bg {
+        position: absolute;
+        inset: 0;
+        background-image: url('WhatsApp Image 2026-02-11 at 9.21.54 AM.jpeg');
+        background-size: cover;
+        background-position: center;
+        opacity: 0.35;
+        filter: grayscale(30%);
+    }
+    .specialties-card {
+        background: rgba(255, 255, 255, 0.08);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    .specialties-card:hover {
+        background: rgba(255, 255, 255, 0.15);
+        border-color: var(--brand-orange);
+        transform: scale(1.02);
+    }
+  </style>
 </head>
 <body class="bg-gray-50 text-gray-800">
 
-    <!-- Navigation -->
-    <nav class="fixed w-full z-50 bg-white/95 backdrop-blur-md shadow-sm border-b border-gray-100">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-16 md:h-20">
-                <div class="flex-shrink-0 flex items-center">
-                    <div class="text-lg md:text-2xl font-bold text-red-800 flex items-center">
-                        <span class="text-yellow-600 mr-2"><i class="fas fa-utensils"></i></span>
-                        <span data-key="brand_name">SUDHARSAN CATERING</span>
+  <!-- Navigation -->
+  <nav id="site-nav" class="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md shadow-sm border-b border-gray-100">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-16 md:h-20">
+        <div class="flex-shrink-0 flex items-center">
+          <div class="text-lg md:text-2xl font-bold text-red-800 flex items-center">
+            <span class="text-yellow-600 mr-2"><i class="fas fa-utensils"></i></span>
+            <span data-key="brand_name">SUDHARSAN CATERING</span>
+          </div>
+        </div>
+
+        <!-- Desktop Menu -->
+        <div class="hidden md:flex items-center space-x-6 lg:space-x-8 font-medium">
+          <div class="flex bg-gray-100 rounded-full p-1 border">
+            <button data-lang="en" class="lang-btn px-3 py-1 rounded-full text-xs transition-all active">EN</button>
+            <button data-lang="ta" class="lang-btn px-3 py-1 rounded-full text-xs transition-all">தமிழ்</button>
+          </div>
+
+          <a href="#home" class="nav-link text-gray-900" data-key="nav_home">Home</a>
+          <a href="#about" class="nav-link text-gray-700 hover:text-yellow-600" data-key="nav_roots">Our Roots</a>
+          <a href="#services" class="nav-link text-gray-700 hover:text-yellow-600" data-key="nav_services">Specialties</a>
+          <a href="#menu" class="nav-link text-gray-700 hover:text-yellow-600" data-key="nav_menu">Menu</a>
+          <a href="#contact" class="px-5 py-2 bg-red-800 text-white rounded-full hover:bg-red-900 transition-colors shadow-sm" data-key="nav_book">Book Now</a>
+        </div>
+
+        <!-- Mobile Header Actions -->
+        <div class="md:hidden flex items-center space-x-3">
+          <div class="flex bg-gray-100 rounded-full p-0.5 border">
+            <button data-lang="en" class="lang-btn-mob px-2 py-1 rounded-full text-[10px] font-bold">EN</button>
+            <button data-lang="ta" class="lang-btn-mob px-2 py-1 rounded-full text-[10px] font-bold">தமிழ்</button>
+          </div>
+          <button id="mobile-menu-btn" class="text-gray-700 p-2" aria-label="Toggle Menu" aria-expanded="false">
+            <i class="fas fa-bars text-xl"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Menu Panel -->
+    <div id="mobile-menu" class="hidden md:hidden bg-white border-t p-6 space-y-4 shadow-xl text-center" role="menu" aria-hidden="true">
+      <a href="#home" class="block text-lg text-gray-800 font-medium border-b border-gray-50 pb-2" data-key="nav_home">Home</a>
+      <a href="#about" class="block text-lg text-gray-800 font-medium border-b border-gray-50 pb-2" data-key="nav_roots">Our Roots</a>
+      <a href="#services" class="block text-lg text-gray-800 font-medium border-b border-gray-50 pb-2" data-key="nav_services">Specialties</a>
+      <a href="#menu" class="block text-lg text-gray-800 font-medium border-b border-gray-50 pb-2" data-key="nav_menu">Menu</a>
+      <a href="#contact" class="block bg-red-800 text-white px-6 py-3 rounded-xl font-bold" data-key="nav_book">Book Now</a>
+    </div>
+  </nav>
+
+  <!-- WhatsApp floating button -->
+  <a href="https://wa.me/916380311973" target="_blank" class="whatsapp-float" aria-label="WhatsApp Contact">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+
+  <!-- Hero Section -->
+  <section id="home" class="relative min-h-[85vh] md:h-screen flex items-center overflow-hidden">
+    <div class="absolute inset-0 z-0">
+      <img src="https://images.unsplash.com/photo-1547573854-74d2a71d0826?auto=format&fit=crop&w=1920&q=80" alt="Catering Background" class="w-full h-full object-cover object-center">
+      <div class="absolute inset-0 bg-black/60"></div>
+    </div>
+
+    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white">
+      <h4 class="text-yellow-500 text-xs md:text-sm font-semibold tracking-widest uppercase mb-4" data-key="hero_since">Since 2010</h4>
+      <h1 class="text-3xl sm:text-5xl md:text-6xl font-bold mb-6 leading-tight px-2">
+        <span data-key="hero_title_1">Pure Authentic Flavor</span><br class="hidden sm:block">
+        <span class="text-yellow-500" data-key="hero_title_2">Unmatched Hygiene</span>
+      </h1>
+      <p class="text-sm md:text-xl mb-8 md:mb-12 max-w-2xl mx-auto text-gray-200 px-4" data-key="hero_desc">Serving the most authentic tastes for your auspicious celebrations with a guarantee of 100% hygiene.</p>
+      <div class="flex flex-col sm:flex-row justify-center items-center gap-4 px-6">
+        <a href="#menu" class="w-full sm:w-auto px-8 py-3.5 bg-yellow-600 hover:bg-yellow-700 text-white rounded-xl font-bold transition-all shadow-md" data-key="nav_menu">Explore Menu</a>
+        <button onclick="openStoryModal()" class="w-full sm:w-auto px-8 py-3.5 border-2 border-white/50 hover:bg-white hover:text-red-800 text-white rounded-xl font-bold transition-all" data-key="hero_btn_2">Our Story</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quality Highlights -->
+  <div class="relative z-20 -mt-10 md:-mt-16 max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-4 px-4">
+    <div class="bg-white p-6 md:p-8 rounded-2xl shadow-lg flex items-center space-x-4 md:space-x-6 hover-lift border-b-4 border-yellow-500 reveal">
+      <div class="text-3xl md:text-4xl text-yellow-600 flex-shrink-0"><i class="fas fa-pepper-hot"></i></div>
+      <div>
+        <h3 class="font-bold text-lg md:text-xl" data-key="high_1_t">Authentic Flavors</h3>
+        <p class="text-gray-500 text-xs md:text-sm leading-relaxed" data-key="high_1_d">Original spices and traditional recipes passed down since 2010.</p>
+      </div>
+    </div>
+    <div class="bg-white p-6 md:p-8 rounded-2xl shadow-lg flex items-center space-x-4 md:space-x-6 hover-lift border-b-4 border-red-800 reveal">
+      <div class="text-3xl md:text-4xl text-red-800 flex-shrink-0"><i class="fas fa-hands-bubbles"></i></div>
+      <div>
+        <h3 class="font-bold text-lg md:text-xl" data-key="high_2_t">Superior Hygiene</h3>
+        <p class="text-gray-500 text-xs md:text-sm leading-relaxed" data-key="high_2_d">Safe, clean, and sanitized food preparation for your peace of mind.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- About Section -->
+  <section id="about" class="py-16 md:py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col md:flex-row items-center gap-10 md:gap-16">
+        <div class="w-full md:w-1/2 px-4 md:px-0 reveal">
+          <div class="relative max-w-md mx-auto md:max-w-none">
+            <div class="bg-black rounded-3xl p-8 shadow-2xl flex items-center justify-center aspect-[4/3] overflow-hidden">
+                <img src="image_55dfe2.jpg" alt="Sudharsan Tiffin Centre Logo" class="max-h-full w-auto object-contain">
+            </div>
+            <div class="absolute -bottom-4 -right-4 w-32 h-32 md:w-48 md:h-48 bg-yellow-100 rounded-full -z-0"></div>
+            <div class="absolute top-4 left-4 bg-white/90 backdrop-blur p-3 md:p-4 rounded-xl shadow-lg z-20">
+              <p class="text-red-800 font-bold text-sm">Est. 2010</p>
+              <p class="text-[10px] md:text-xs text-gray-500" data-key="about_badge">Tiffin Center Beginnings</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="w-full md:w-1/2 text-center md:text-left reveal">
+          <h2 class="text-2xl md:text-4xl font-bold text-gray-900 mb-6 leading-tight px-2">
+            <span data-key="about_title_1">Rooted in Tradition:</span> <br class="hidden md:block">
+            <span class="text-red-800 italic" data-key="about_title_2">A Legacy of Taste & Care</span>
+          </h2>
+
+          <p class="text-gray-600 mb-4 text-sm md:text-base leading-relaxed px-4 md:px-0" data-key="about_p1">
+            It all started in 2010 as a small tiffin center—a humble shop run by my father. Every dish was crafted with the same authentic flavor that defined our home kitchen.
+          </p>
+
+          <div class="flex justify-center md:justify-start gap-4 mt-6">
+            <button onclick="openStoryModal()" class="px-8 py-3 bg-red-800 text-white rounded-xl hover:bg-red-900 transition-colors shadow-sm font-bold" data-key="about_btn">Our Full Story</button>
+            <a href="#contact" class="px-6 py-3 border border-gray-200 rounded-xl hover:bg-gray-50 transition font-bold" data-key="nav_book">Book Now</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Menu Section -->
+  <section id="menu" class="py-16 md:py-24 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12 md:mb-16 reveal">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4" data-key="menu_main_title">Our Delicious Menu</h2>
+        <div class="w-20 h-1 bg-yellow-600 mx-auto rounded-full"></div>
+        <p class="mt-4 text-gray-600 text-sm md:text-base px-6" data-key="menu_main_desc">Explore our specialized catering packages and our authentic evening tiffin menu.</p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12">
+        <!-- Catering Left -->
+        <div class="reveal">
+          <div class="bg-red-800 text-white p-5 md:p-6 rounded-t-2xl flex items-center justify-between">
+            <h3 class="text-xl md:text-2xl font-bold" data-key="m_cat_title">Functions Lists</h3>
+            <i class="fas fa-utensils text-xl opacity-40"></i>
+          </div>
+          <div class="bg-white p-6 md:p-8 rounded-b-2xl shadow-md h-[500px] overflow-y-auto menu-scroll space-y-6 md:space-y-8">
+            <div class="border-l-4 border-yellow-500 pl-4">
+              <h4 class="font-bold text-base md:text-lg" data-key="m_cat_1_t">Wedding Special</h4>
+              <p class="text-gray-500 text-xs md:text-sm" data-key="m_cat_1_d">Full-course traditional feast with over 24 authentic items.</p>
+            </div>
+            <div class="border-l-4 border-yellow-500 pl-4">
+              <h4 class="font-bold text-base md:text-lg" data-key="m_cat_4_t">Engagement (Betrothal)</h4>
+              <p class="text-gray-500 text-xs md:text-sm" data-key="m_cat_4_d">Customized tiffin or lunch menus for auspicious beginnings.</p>
+            </div>
+            <div class="border-l-4 border-yellow-500 pl-4">
+              <h4 class="font-bold text-base md:text-lg" data-key="m_cat_2_t">Baby Shower (Valaikappu)</h4>
+              <p class="text-gray-500 text-xs md:text-sm" data-key="m_cat_2_d">Specialized 5 or 7 varieties of rice and traditional sweets.</p>
+            </div>
+            <div class="border-l-4 border-yellow-500 pl-4">
+              <h4 class="font-bold text-base md:text-lg" data-key="m_cat_5_t">Puberty Ceremony</h4>
+              <p class="text-gray-500 text-xs md:text-sm" data-key="m_cat_5_d">Traditional Manjal Neerattu Vizha grand feasts.</p>
+            </div>
+            <div class="border-l-4 border-yellow-500 pl-4">
+              <h4 class="font-bold text-base md:text-lg" data-key="m_cat_6_t">House Warming</h4>
+              <p class="text-gray-500 text-xs md:text-sm" data-key="m_cat_6_d">Divine vegetarian spreads for Griha Pravesham.</p>
+            </div>
+            <div class="border-l-4 border-yellow-500 pl-4">
+              <h4 class="font-bold text-base md:text-lg" data-key="m_cat_7_t">Ear Piercing</h4>
+              <p class="text-gray-500 text-xs md:text-sm" data-key="m_cat_7_d">Traditional feast for Kaadhu Kuthu ceremonies.</p>
+            </div>
+            <div class="border-l-4 border-yellow-500 pl-4">
+              <h4 class="font-bold text-base md:text-lg" data-key="m_cat_8_t">Birthday Parties</h4>
+              <p class="text-gray-500 text-xs md:text-sm" data-key="m_cat_8_d">Delicious veg spreads for kids and adults alike.</p>
+            </div>
+            <div class="border-l-4 border-yellow-500 pl-4">
+              <h4 class="font-bold text-base md:text-lg" data-key="m_cat_9_t">60th/80th Birthday</h4>
+              <p class="text-gray-500 text-xs md:text-sm" data-key="m_cat_9_d">Sashtiapthapoorthi & Sadhabishegam special catering.</p>
+            </div>
+             <div class="border-l-4 border-yellow-500 pl-4">
+              <h4 class="font-bold text-base md:text-lg" data-key="m_cat_3_t">Festival Special</h4>
+              <p class="text-gray-500 text-xs md:text-sm" data-key="m_cat_3_d">Auspicious meals for Govindha and Chithirai Thiruvizha festivals.</p>
+            </div>
+            <a href="#contact" class="block text-center py-3.5 border-2 border-red-800 text-red-800 rounded-xl font-bold hover:bg-red-800 hover:text-white transition-all text-sm mt-4" data-key="m_cat_btn">Request Quote for Event</a>
+          </div>
+        </div>
+
+        <!-- Tiffin Menu Right -->
+        <div class="reveal">
+          <div class="bg-black text-white p-5 md:p-6 rounded-t-2xl flex items-center justify-between border-b-4 border-[var(--brand-orange)] shadow-lg">
+            <div class="flex items-center gap-4">
+              <div class="w-20 h-20 md:w-24 md:h-24 bg-white rounded-full p-0.5 shadow-xl logo-container overflow-hidden">
+                <img src="image_55dfe2.jpg" alt="Sudharsan Tiffin Centre Official Logo">
+              </div>
+              <div>
+                <h3 class="text-xl md:text-2xl font-black uppercase tracking-tighter" data-key="m_hot_title">Sudharsan Tiffin Centre</h3>
+                <div class="flex items-center gap-2 mt-1">
+                    <span class="text-xs font-bold text-[var(--brand-orange)]" data-key="hero_since">Since 2010</span>
+                    <div class="veg-symbol scale-90 rounded-sm"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="menu-pattern p-4 md:p-0 rounded-b-2xl shadow-md h-[500px] overflow-y-auto menu-scroll border border-yellow-200">
+            <table class="w-full text-left border-collapse">
+                <thead class="sticky top-0 bg-yellow-100 z-10 shadow-sm">
+                    <tr>
+                        <th class="px-4 py-3 text-xs font-bold text-red-900 uppercase tracking-wider" data-key="tbl_item">Item</th>
+                        <th class="px-4 py-3 text-xs font-bold text-red-900 uppercase tracking-wider text-right" data-key="tbl_price">Price</th>
+                    </tr>
+                </thead>
+                <tbody id="hotel-menu-container"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Specialties Section -->
+  <section id="services" class="py-16 md:py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="specialties-container p-8 md:p-16 reveal">
+            <div class="specialties-img-bg"></div>
+            <div class="absolute inset-0 bg-gradient-to-br from-black/80 via-black/40 to-transparent z-0"></div>
+            <div class="relative z-10">
+                <div class="mb-12 text-center md:text-left">
+                    <h2 class="text-3xl md:text-5xl font-bold text-white mb-4" data-key="nav_services">Our Specialties</h2>
+                    <div class="w-24 h-1.5 bg-[var(--brand-orange)] rounded-full mb-6 mx-auto md:mx-0"></div>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="specialties-card p-8 rounded-2xl group">
+                        <div class="w-14 h-14 bg-[var(--brand-orange)] rounded-xl flex items-center justify-center mb-6 text-white text-2xl transition-transform group-hover:rotate-12">
+                            <i class="fas fa-ring"></i>
+                        </div>
+                        <h3 class="text-xl md:text-2xl font-bold mb-3 text-white" data-key="s_wedding_t">Grand Weddings</h3>
+                        <p class="text-gray-300 text-sm leading-relaxed" data-key="s_wedding_d">Authentic feasts served with royal hospitality and surgical hygiene.</p>
+                    </div>
+                    <div class="specialties-card p-8 rounded-2xl group">
+                        <div class="w-14 h-14 bg-[var(--brand-orange)] rounded-xl flex items-center justify-center mb-6 text-white text-2xl transition-transform group-hover:rotate-12">
+                            <i class="fas fa-baby-carriage"></i>
+                        </div>
+                        <h3 class="text-xl md:text-2xl font-bold mb-3 text-white" data-key="s_baby_t">Baby Showers</h3>
+                        <p class="text-gray-300 text-sm leading-relaxed" data-key="s_baby_d">Specializing in traditional Valaikappu menus with nutritious flavors.</p>
+                    </div>
+                    <div class="specialties-card p-8 rounded-2xl group">
+                        <div class="w-14 h-14 bg-[var(--brand-orange)] rounded-xl flex items-center justify-center mb-6 text-white text-2xl transition-transform group-hover:rotate-12">
+                            <i class="fas fa-om"></i>
+                        </div>
+                        <h3 class="text-xl md:text-2xl font-bold mb-3 text-white" data-key="s_fest_t">Festival Specials</h3>
+                        <p class="text-gray-300 text-sm leading-relaxed" data-key="s_fest_d">Auspicious menus for Govindha, Chithirai Thiruvizha and temple festivals.</p>
                     </div>
                 </div>
-                
-                <!-- Desktop Menu -->
-                <div class="hidden md:flex items-center space-x-6 lg:space-x-8 font-medium">
-                    <div class="flex bg-gray-100 rounded-full p-1 border">
-                        <button onclick="changeLanguage('en')" id="btn-en" class="lang-btn active px-3 py-1 rounded-full text-xs transition-all">EN</button>
-                        <button onclick="changeLanguage('ta')" id="btn-ta" class="lang-btn px-3 py-1 rounded-full text-xs transition-all">தமிழ்</button>
-                    </div>
-                    <a href="#home" class="nav-link text-gray-900" data-key="nav_home">Home</a>
-                    <a href="#about" class="nav-link text-gray-700 hover:text-yellow-600" data-key="nav_roots">Our Roots</a>
-                    <a href="#services" class="nav-link text-gray-700 hover:text-yellow-600" data-key="nav_services">Specialties</a>
-                    <a href="#menu" class="nav-link text-gray-700 hover:text-yellow-600" data-key="nav_menu">Menu</a>
-                    <a href="#contact" class="px-5 py-2 bg-red-800 text-white rounded-full hover:bg-red-900 transition-colors shadow-sm" data-key="nav_book">Book Now</a>
-                </div>
-
-                <!-- Mobile Header Actions -->
-                <div class="md:hidden flex items-center space-x-3">
-                    <div class="flex bg-gray-100 rounded-full p-0.5 border">
-                        <button onclick="changeLanguage('en')" class="lang-btn-mob px-2 py-1 rounded-full text-[10px] font-bold">EN</button>
-                        <button onclick="changeLanguage('ta')" class="lang-btn-mob px-2 py-1 rounded-full text-[10px] font-bold">தமிழ்</button>
-                    </div>
-                    <button id="mobile-menu-btn" class="text-gray-700 p-2" aria-label="Toggle Menu">
-                        <i class="fas fa-bars text-xl"></i>
-                    </button>
-                </div>
-            </div>
-        </div>
-
-        <!-- Mobile Menu Panel -->
-        <div id="mobile-menu" class="hidden md:hidden bg-white border-t p-6 space-y-4 shadow-xl text-center animate-fade-in-down">
-            <a href="#home" class="block text-lg text-gray-800 font-medium border-b border-gray-50 pb-2" data-key="nav_home">Home</a>
-            <a href="#about" class="block text-lg text-gray-800 font-medium border-b border-gray-50 pb-2" data-key="nav_roots">Our Roots</a>
-            <a href="#services" class="block text-lg text-gray-800 font-medium border-b border-gray-50 pb-2" data-key="nav_services">Specialties</a>
-            <a href="#menu" class="block text-lg text-gray-800 font-medium border-b border-gray-50 pb-2" data-key="nav_menu">Menu</a>
-            <a href="#contact" class="block bg-red-800 text-white px-6 py-3 rounded-xl font-bold" data-key="nav_book">Book Now</a>
-        </div>
-    </nav>
-
-    <!-- Hero Section -->
-    <section id="home" class="relative min-h-[90vh] md:h-screen flex items-center pt-16 overflow-hidden">
-        <div class="absolute inset-0 z-0">
-            <img src="https://images.unsplash.com/photo-1547573854-74d2a71d0826?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80" alt="Catering Background" class="w-full h-full object-cover">
-            <div class="absolute inset-0 bg-black/60"></div>
-        </div>
-        
-        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white">
-            <h4 class="text-yellow-500 text-xs md:text-sm font-semibold tracking-widest uppercase mb-4" data-key="hero_since">Since 2010</h4>
-            <h1 class="text-3xl sm:text-5xl md:text-7xl font-bold mb-6 leading-tight px-2">
-                <span data-key="hero_title_1">Pure Authentic Flavor</span><br class="hidden sm:block">
-                <span class="text-yellow-500" data-key="hero_title_2">Unmatched Hygiene</span>
-            </h1>
-            <p class="text-sm md:text-xl mb-8 md:mb-12 max-w-2xl mx-auto text-gray-200 px-4" data-key="hero_desc">Serving the most authentic tastes for your auspicious celebrations with a guarantee of 100% hygiene.</p>
-            <div class="flex flex-col sm:flex-row justify-center items-center gap-4 px-6">
-                <a href="#menu" class="w-full sm:w-auto px-8 py-3.5 bg-yellow-600 hover:bg-yellow-700 text-white rounded-xl font-bold transition-all shadow-md" data-key="nav_menu">Explore Menu</a>
-                <a href="#contact" class="w-full sm:w-auto px-8 py-3.5 border-2 border-white/50 hover:bg-white hover:text-red-800 text-white rounded-xl font-bold transition-all" data-key="hero_btn_2">Book Consultation</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Quality Highlights (Responsive Grid) -->
-    <div class="relative z-20 -mt-10 md:-mt-16 max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-4 px-4">
-        <div class="bg-white p-6 md:p-8 rounded-2xl shadow-lg flex items-center space-x-4 md:space-x-6 hover-lift border-b-4 border-yellow-500">
-            <div class="text-3xl md:text-4xl text-yellow-600 flex-shrink-0"><i class="fas fa-pepper-hot"></i></div>
-            <div>
-                <h3 class="font-bold text-lg md:text-xl" data-key="high_1_t">Authentic Flavors</h3>
-                <p class="text-gray-500 text-xs md:text-sm leading-relaxed" data-key="high_1_d">Original spices and traditional recipes passed down since 2010.</p>
-            </div>
-        </div>
-        <div class="bg-white p-6 md:p-8 rounded-2xl shadow-lg flex items-center space-x-4 md:space-x-6 hover-lift border-b-4 border-red-800">
-            <div class="text-3xl md:text-4xl text-red-800 flex-shrink-0"><i class="fas fa-hands-bubbles"></i></div>
-            <div>
-                <h3 class="font-bold text-lg md:text-xl" data-key="high_2_t">Superior Hygiene</h3>
-                <p class="text-gray-500 text-xs md:text-sm leading-relaxed" data-key="high_2_d">Safe, clean, and sanitized food preparation for your peace of mind.</p>
             </div>
         </div>
     </div>
+  </section>
 
-    <!-- About Section -->
-    <section id="about" class="py-16 md:py-24 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 reveal">
-            <div class="flex flex-col md:flex-row items-center gap-10 md:gap-16">
-                <div class="w-full md:w-1/2 px-4 md:px-0">
-                    <div class="relative max-w-md mx-auto md:max-w-none">
-                        <img src="https://images.unsplash.com/photo-1541167760496-1628856ab772?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Roots" class="rounded-3xl shadow-xl z-10 relative w-full aspect-[4/3] object-cover">
-                        <div class="absolute -bottom-4 -right-4 w-32 h-32 md:w-48 md:h-48 bg-yellow-100 rounded-full -z-0"></div>
-                        <div class="absolute top-4 left-4 bg-white/90 backdrop-blur p-3 md:p-4 rounded-xl shadow-lg z-20">
-                            <p class="text-red-800 font-bold text-sm md:text-base">Est. 2010</p>
-                            <p class="text-[10px] md:text-xs text-gray-500" data-key="about_badge">Tiffin Center Beginnings</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="w-full md:w-1/2 text-center md:text-left">
-                    <h2 class="text-2xl md:text-4xl font-bold text-gray-900 mb-6 leading-tight px-2">
-                        <span data-key="about_title_1">Rooted in Tradition:</span> <br class="hidden md:block">
-                        <span class="text-red-800 italic" data-key="about_title_2">A Legacy of Taste & Care</span>
-                    </h2>
-                    <p class="text-gray-600 mb-4 text-sm md:text-base leading-relaxed px-4 md:px-0" data-key="about_p1">It all started in 2010 as a small tiffin center—a humble shop run by my father. Every dish was crafted with the same authentic flavor that defined our home kitchen.</p>
-                    <p class="text-gray-600 mb-8 text-sm md:text-base leading-relaxed px-4 md:px-0" data-key="about_p2">Word of our quality and strict hygiene spread quickly. The small shop grew faster than we imagined, attracting people from all over. Today, we carry that same passion for purity into every event we cater.</p>
-                    <div class="flex justify-center md:justify-start">
-                        <a href="#contact" class="px-8 py-3 bg-red-800 text-white rounded-xl hover:bg-red-900 transition-colors shadow-sm" data-key="about_btn">Our Full Story</a>
-                    </div>
-                </div>
-            </div>
+  <!-- Contact Section with Slideshow -->
+  <section id="contact" class="relative py-16 md:py-32 overflow-hidden flex items-center justify-center">
+    <div class="contact-slide-wrapper">
+        <div class="contact-slide active" style="background-image: url('WhatsApp Image 2026-02-11 at 9.21.54 AM.jpeg');"></div>
+        <div class="contact-slide" style="background-image: url('WhatsApp Image 2026-02-11 at 9.21.54 AM (1).jpeg');"></div>
+    </div>
+    <div class="contact-overlay"></div>
+    <div class="relative z-10 max-w-xl w-full mx-auto px-4 reveal">
+      <div class="bg-white/95 backdrop-blur-sm rounded-3xl shadow-2xl p-8 md:p-12 border border-gray-100">
+        <div class="text-center mb-8">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-2" data-key="nav_book">Book Now</h2>
+            <p class="text-red-800 font-bold text-sm tracking-widest uppercase" data-key="story_title">Our Journey Since 2010</p>
         </div>
-    </section>
+        <form id="whatsapp-booking-form" class="space-y-4">
+          <input type="text" id="cust-name" placeholder="Name" required class="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-red-800 outline-none transition-all text-sm">
+          <input type="tel" id="cust-phone" placeholder="Phone" required class="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-red-800 outline-none transition-all text-sm">
+          <select id="cust-event" class="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-red-800 outline-none transition-all text-sm bg-white">
+            <option value="" disabled selected data-key="opt_event">Select Event Type</option>
+            <option value="Wedding">Wedding</option>
+            <option value="Baby Shower">Baby Shower</option>
+            <option value="House Warming">House Warming</option>
+            <option value="Puberty Ceremony">Puberty Ceremony</option>
+            <option value="Festival">Festival</option>
+            <option value="Other">Other</option>
+          </select>
+          <button type="button" onclick="sendWhatsAppBooking()" class="w-full bg-red-800 text-white py-4 rounded-xl font-bold hover:bg-red-900 transition-all shadow-md mt-6 flex items-center justify-center gap-2" data-key="nav_book">
+              <i class="fab fa-whatsapp text-xl"></i> Book Now
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
 
-    <!-- Menu Section (Split View) -->
-    <section id="menu" class="py-16 md:py-24 bg-gray-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-12 md:mb-16 reveal">
-                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4" data-key="menu_main_title">Our Delicious Menu</h2>
-                <div class="w-20 h-1 bg-yellow-600 mx-auto rounded-full"></div>
-                <p class="mt-4 text-gray-600 text-sm md:text-base px-6" data-key="menu_main_desc">Explore our specialized catering packages and our authentic evening tiffin menu.</p>
-            </div>
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-gray-400 pt-16 pb-10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <div class="text-xl md:text-2xl font-bold text-white mb-6 tracking-wide">
+        <span data-key="brand_name">SUDHARSAN CATERING</span>
+      </div>
+      <p class="mb-8 max-w-lg mx-auto text-xs md:text-sm px-4" data-key="footer_desc">Authentic flavor, exceptional hygiene. From father's tiffin center in 2010 to your grand celebrations today.</p>
+      <div class="flex justify-center space-x-8 mb-12 text-2xl">
+        <a href="#" class="hover:text-yellow-500 transition-colors"><i class="fab fa-facebook"></i></a>
+        <a href="#" class="hover:text-yellow-500 transition-colors"><i class="fab fa-instagram"></i></a>
+        <a href="https://wa.me/916380311973" class="hover:text-yellow-500 transition-colors"><i class="fab fa-whatsapp"></i></a>
+      </div>
+      <div class="border-t border-gray-800 pt-8 text-[10px] md:text-xs">
+        <p>&copy; <span id="footer-year">2026</span> Sudharsan Catering. <span data-key="footer_copy">All Rights Reserved.</span></p>
+        <p class="mt-3 text-yellow-600 font-bold" data-key="footer_phone">WhatsApp: +91 6380311973</p>
+      </div>
+    </div>
+  </footer>
 
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12">
-                <!-- Catering Region -->
-                <div class="reveal">
-                    <div class="bg-red-800 text-white p-5 md:p-6 rounded-t-2xl flex items-center justify-between">
-                        <h3 class="text-xl md:text-2xl font-bold" data-key="m_cat_title">Premium Catering</h3>
-                        <i class="fas fa-utensils text-xl opacity-40"></i>
-                    </div>
-                    <div class="bg-white p-6 md:p-8 rounded-b-2xl shadow-md space-y-6 md:space-y-8">
-                        <div class="border-l-4 border-yellow-500 pl-4">
-                            <h4 class="font-bold text-base md:text-lg" data-key="m_cat_1_t">Wedding Special</h4>
-                            <p class="text-gray-500 text-xs md:text-sm" data-key="m_cat_1_d">Full-course traditional feast with over 24 authentic items.</p>
-                        </div>
-                        <div class="border-l-4 border-yellow-500 pl-4">
-                            <h4 class="font-bold text-base md:text-lg" data-key="m_cat_2_t">Baby Shower (Valaikappu)</h4>
-                            <p class="text-gray-500 text-xs md:text-sm" data-key="m_cat_2_d">Specialized 5 or 7 varieties of variety rice and traditional sweets.</p>
-                        </div>
-                        <div class="border-l-4 border-yellow-500 pl-4">
-                            <h4 class="font-bold text-base md:text-lg" data-key="m_cat_3_t">Festival Special (Govindha/Chithirai)</h4>
-                            <p class="text-gray-500 text-xs md:text-sm" data-key="m_cat_3_d">Pure vegetarian auspicious meals for temple and home festivals.</p>
-                        </div>
-                        <a href="#contact" class="block text-center py-3.5 border-2 border-red-800 text-red-800 rounded-xl font-bold hover:bg-red-800 hover:text-white transition-all text-sm" data-key="m_cat_btn">Request Quote for Event</a>
-                    </div>
-                </div>
+  <!-- Full Story Modal -->
+  <div id="story-modal" class="fixed inset-0 z-70 hidden items-center justify-center" role="dialog" aria-modal="true">
+    <div class="modal-backdrop absolute inset-0"></div>
+    <div class="relative bg-white rounded-xl shadow-2xl max-w-2xl mx-4 p-8 z-80 overflow-y-auto max-h-[90vh]">
+      <button onclick="closeStoryModal()" class="absolute top-4 right-4 text-gray-500 hover:text-gray-800"><i class="fas fa-times"></i></button>
+      <h3 class="text-2xl font-bold text-red-800 mb-6" data-key="story_title">Our Journey Since 2010</h3>
+      <div class="space-y-4 text-gray-700 leading-relaxed text-sm md:text-base">
+        <p data-key="story_p1">Sudharsan Catering began its journey in 2010 as a small, humble tiffin center run by my father. Every idli and dosa served back then was made with the same care and authentic spices we used at home.</p>
+        <p data-key="story_p2">As word spread about our uncompromising hygiene and 'home-cooked' taste, we evolved. We moved from serving neighbors to catering grand life events.</p>
+        <p data-key="story_p3">Today, we specialize in pure vegetarian catering for Weddings, Baby Showers (Valaikappu), and Temple Festivals. Our mission remains simple: to serve food that is as pure as your celebrations.</p>
+      </div>
+      <div class="mt-8 text-center">
+        <button onclick="closeStoryModal()" class="px-8 py-3 bg-red-800 text-white rounded-xl font-bold">Close</button>
+      </div>
+    </div>
+  </div>
 
-                <!-- Hotel Region (Tiffin) -->
-                <div class="reveal">
-                    <div class="bg-yellow-600 text-white p-5 md:p-6 rounded-t-2xl flex items-center justify-between">
-                        <div>
-                            <h3 class="text-xl md:text-2xl font-bold" data-key="m_hot_title">Evening Tiffin Center</h3>
-                            <span class="text-[10px] bg-white text-yellow-700 px-2 py-0.5 rounded-full font-bold uppercase mt-1 inline-block" data-key="m_hot_badge">Evening Only</span>
-                        </div>
-                        <i class="fas fa-store text-xl opacity-40"></i>
-                    </div>
-                    <div class="bg-white p-4 md:p-6 rounded-b-2xl shadow-md h-[400px] md:h-[500px] overflow-y-auto menu-scroll">
-                        <div class="grid grid-cols-1 gap-2" id="hotel-menu-container">
-                            <!-- Items populated via JS -->
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+  <script>
+    const hotelMenuItems = [
+      { en: "Idli (2 pcs)", ta: "இட்லி (2)", price: "24.00" },
+      { en: "Dosa (1 pc)", ta: "தோசை (1)", price: "35.00" },
+      { en: "Special Dosa", ta: "ஸ்பெஷல் தோசை", price: "40.00" },
+      { en: "Ghee Dosa", ta: "நெய் தோசை", price: "50.00" },
+      { en: "Butter Dosa", ta: "பட்டர் தோசை", price: "45.00" },
+      { en: "Onion Uthappam", ta: "ஆனியன் ஊத்தப்பம்", price: "50.00" },
+      { en: "Onion Dosa", ta: "ஆனியன் தோசை", price: "50.00" },
+      { en: "Rava Dosa", ta: "ரவா தோசை", price: "40.00" },
+      { en: "Podi Dosa", ta: "பொடி தோசை", price: "40.00" },
+      { en: "Lemon Pongal", ta: "லெமன் பொங்கல்", price: "40.00" },
+      { en: "Ven Pongal", ta: "வெண் பொங்கல்", price: "40.00" },
+      { en: "Tomato Pongal", ta: "தக்காளி பொங்கல்", price: "40.00" },
+      { en: "Puliotharai", ta: "புளியோதரை", price: "40.00" },
+      { en: "Mushroom Biryani", ta: "காளான் பிரியாணி", price: "60.00" },
+      { en: "Chappathi (1 pc)", ta: "சப்பாத்தி (1)", price: "15.00" },
+      { en: "Poori Masala Set", ta: "பூரி மசால் செட்", price: "40.00" },
+      { en: "Sola Poori", ta: "சோளாபூரி", price: "50.00" },
+      { en: "Mushroom Dosa", ta: "காளான் தோசை", price: "60.00" },
+      { en: "Uthappam", ta: "உத்தப்பம்", price: "30.00" },
+      { en: "Ghee Podi Roast", ta: "நெய் பொடி ரோஸ்ட்", price: "55.00" },
+      { en: "Parotta (1 pc)", ta: "புரோட்டா (1)", price: "15.00" },
+      { en: "Chilly Parotta", ta: "சில்லி புரோட்டா", price: "50.00" },
+      { en: "Piece Parotta", ta: "பீஸ் புரோட்டா", price: "50.00" },
+      { en: "Mushroom Chappathi", ta: "காளான் சப்பாத்தி", price: "40.00" },
+      { en: "Paneer Chappathi", ta: "பன்னீர் சப்பாத்தி", price: "40.00" },
+      { en: "Mushroom Parotta", ta: "காளான் புரோட்டா", price: "40.00" },
+      { en: "Paneer Parotta", ta: "பன்னீர் புரோட்டா", price: "40.00" },
+      { en: "Paneer Piece Parotta", ta: "பன்னீர் பீஸ் புரோட்டா", price: "60.00" },
+      { en: "Mushroom Piece Parotta", ta: "காளான் பீஸ் புரோட்டா", price: "60.00" },
+      { en: "Chilly Fry Idli", ta: "சில்லி பிரை இட்லி", price: "45.00" },
+      { en: "Chilly Chappathi", ta: "சில்லி சப்பாத்தி", price: "50.00" },
+      { en: "Kothu Chappathi", ta: "கொத்து சப்பாத்தி", price: "50.00" },
+      { en: "Butter Chappathi", ta: "பட்டர் சப்பாத்தி", price: "25.00" },
+      { en: "Sambar Vada", ta: "சாம்பார் வடை", price: "10.00" },
+      { en: "Sambar Vada (Parcel)", ta: "சாம்பார் வடை (பார்சல்)", price: "25.00" },
+      { en: "Kuska", ta: "குஸ்கா", price: "40.00" },
+      { en: "Tomato Gravy Idli (1)", ta: "தக்காளி குழம்பு இட்லி (1)", price: "14.00" },
+      { en: "Veg Biryani", ta: "வெஜிடபிள் பிரியாணி", price: "40.00" },
+      { en: "Paneer Dosa", ta: "பன்னீர் தோசை", price: "60.00" },
+      { en: "Vada (1 pc)", ta: "வடை", price: "7.00" },
+      { en: "Paneer Gravy", ta: "பன்னீர் கிரேவி", price: "70.00" },
+      { en: "Mushroom Gravy", ta: "காளான் கிரேவி", price: "70.00" },
+      { en: "Fried Rice", ta: "ப்ரைட் ரைஸ்", price: "60.00" },
+      { en: "Paneer Fried Rice", ta: "பன்னீர் ப்ரைட் ரைஸ்", price: "70.00" },
+      { en: "Mushroom Fried Rice", ta: "காளான் ப்ரைட் ரைஸ்", price: "70.00" },
+      { en: "Ghee Podi Idli", ta: "நெய் பொடி இட்லி", price: "50.00" },
+      { en: "Paneer Biryani", ta: "பன்னீர் பிரியாணி", price: "60.00" },
+      { en: "Noodles", ta: "நூடுல்ஸ்", price: "50.00" },
+      { en: "Mushroom Manchurian", ta: "காளான் மஞ்சூரியன்", price: "70.00" },
+      { en: "Gobi 65", ta: "கோபி 65", price: "70.00" },
+      { en: "Paneer 65", ta: "பன்னீர் 65", price: "70.00" },
+      { en: "Mushroom 65", ta: "காளான் 65", price: "70.00" }
+    ];
 
-    <!-- Services Section -->
-    <section id="services" class="py-16 md:py-24 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-                <!-- Wedding -->
-                <div class="bg-gray-50 p-8 rounded-3xl border border-gray-100 shadow-sm hover-lift reveal">
-                    <div class="text-red-800 text-2xl mb-4"><i class="fas fa-ring"></i></div>
-                    <h3 class="text-xl md:text-2xl font-bold mb-3 text-red-800" data-key="s_wedding_t">Grand Weddings</h3>
-                    <p class="text-gray-600 text-sm leading-relaxed" data-key="s_wedding_d">Authentic feasts served with royal hospitality and surgical hygiene.</p>
-                </div>
-                <!-- Baby Shower -->
-                <div class="bg-gray-50 p-8 rounded-3xl border border-gray-100 shadow-sm hover-lift reveal">
-                    <div class="text-red-800 text-2xl mb-4"><i class="fas fa-baby-carriage"></i></div>
-                    <h3 class="text-xl md:text-2xl font-bold mb-3 text-red-800" data-key="s_baby_t">Baby Showers</h3>
-                    <p class="text-gray-600 text-sm leading-relaxed" data-key="s_baby_d">Specializing in traditional Valaikappu menus with nutritious and pure flavors.</p>
-                </div>
-                <!-- Festivals -->
-                <div class="bg-gray-50 p-8 rounded-3xl border border-gray-100 shadow-sm hover-lift reveal sm:col-span-2 lg:col-span-1">
-                    <div class="text-red-800 text-2xl mb-4"><i class="fas fa-om"></i></div>
-                    <h3 class="text-xl md:text-2xl font-bold mb-3 text-red-800" data-key="s_fest_t">Festival Specials</h3>
-                    <p class="text-gray-600 text-sm leading-relaxed" data-key="s_fest_d">Auspicious menus for Govindha, Chithirai Thiruvizha and all temple festivals.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+    const translations = {
+      en: {
+        brand_name: "SUDHARSAN CATERING",
+        nav_home: "Home",
+        nav_roots: "Our Roots",
+        nav_services: "Specialties",
+        nav_menu: "Menu",
+        nav_book: "Book Now",
+        hero_since: "Serving Excellence Since 2010",
+        hero_title_1: "Pure Authentic Flavor",
+        hero_title_2: "Unmatched Hygiene",
+        hero_desc: "Serving the most authentic tastes for your auspicious celebrations with a guarantee of 100% hygiene.",
+        hero_btn_2: "Our Story",
+        high_1_t: "Authentic Flavors",
+        high_1_d: "Original spices and traditional recipes passed down since 2010.",
+        high_2_t: "Superior Hygiene",
+        high_2_d: "Safe, clean, and sanitized food preparation for your peace of mind.",
+        about_title_1: "Rooted in Tradition:",
+        about_title_2: "A Legacy of Taste & Care",
+        about_badge: "Tiffin Center Beginnings",
+        about_p1: "It all started in 2010 as a small tiffin center—a humble shop run by my father. Every dish was crafted with the same authentic flavor that defined our home kitchen.",
+        about_btn: "Our Full Story",
+        menu_main_title: "Our Delicious Menu",
+        menu_main_desc: "Explore our specialized catering packages and our authentic evening tiffin menu.",
+        m_cat_title: "Functions Lists",
+        m_cat_1_t: "Wedding Special",
+        m_cat_1_d: "Full-course traditional feast with over 24 authentic items.",
+        m_cat_2_t: "Baby Shower (Valaikappu)",
+        m_cat_2_d: "Specialized variety rice and traditional sweets.",
+        m_cat_3_t: "Festival Special",
+        m_cat_3_d: "Auspicious meals for Govindha and Chithirai Thiruvizha festivals.",
+        m_cat_4_t: "Engagement (Betrothal)",
+        m_cat_4_d: "Customized tiffin or lunch menus for auspicious beginnings.",
+        m_cat_5_t: "Puberty Ceremony",
+        m_cat_5_d: "Traditional Manjal Neerattu Vizha grand feasts.",
+        m_cat_6_t: "House Warming",
+        m_cat_6_d: "Divine vegetarian spreads for Griha Pravesham.",
+        m_cat_7_t: "Ear Piercing",
+        m_cat_7_d: "Traditional feast for Kaadhu Kuthu ceremonies.",
+        m_cat_8_t: "Birthday Parties",
+        m_cat_8_d: "Delicious veg spreads for kids and adults alike.",
+        m_cat_9_t: "60th/80th Birthday",
+        m_cat_9_d: "Sashtiapthapoorthi & Sadhabishegam special catering.",
+        m_cat_btn: "Request Quote for Event",
+        m_hot_title: "Sudharsan Tiffin Centre",
+        m_hot_badge: "Daily 5 PM - 10 PM",
+        tbl_item: "Item Name",
+        tbl_price: "Price (₹)",
+        s_wedding_t: "Grand Weddings",
+        s_wedding_d: "Authentic feasts served with royal hospitality and surgical hygiene.",
+        s_baby_t: "Baby Showers",
+        s_baby_d: "Specializing in traditional Valaikappu menus with nutritious and pure flavors.",
+        s_fest_t: "Festival Specials",
+        s_fest_d: "Auspicious menus for all temple and family festivals.",
+        opt_event: "Select Event Type",
+        footer_desc: "Authentic flavor, exceptional hygiene. From father's tiffin center in 2010 to your grand celebrations today.",
+        footer_copy: "All Rights Reserved.",
+        footer_phone: "Call/WhatsApp: +91 6380311973",
+        story_title: "Our Journey Since 2010",
+        story_p1: "Sudharsan Catering began its journey in 2010 as a small, humble tiffin center run by my father.",
+        story_p2: "As word spread about our uncompromising hygiene and home-cooked taste, we evolved.",
+        story_p3: "Today, we specialize in pure vegetarian catering for Weddings, Baby Showers, and Festivals."
+      },
+      ta: {
+        brand_name: "சுதர்சன் கேட்டரிங்",
+        nav_home: "முகப்பு",
+        nav_roots: "எங்கள் வரலாறு",
+        nav_services: "சிறப்புகள்",
+        nav_menu: "மெனு",
+        nav_book: "முன்பதிவு",
+        hero_since: "2010 முதல் சிறந்த சேவை",
+        hero_title_1: "சுத்தமான பாரம்பரிய சுவை",
+        hero_title_2: "உயர்ந்த தரம் மற்றும் சுகாதாரம்",
+        hero_desc: "உங்கள் வீட்டு விசேஷங்களுக்கு 100% சுகாதாரமான முறையில் பாரம்பரிய சுவையுடன் உணவு வழங்குகிறோம்.",
+        hero_btn_2: "எங்கள் கதை",
+        high_1_t: "பாரம்பரிய சுவை",
+        high_1_d: "2010 முதல் எங்களின் சொந்த மசாலா மற்றும் பாரம்பரிய சமையல் முறை.",
+        high_2_t: "சிறந்த சுகாதாரம்",
+        high_2_d: "உங்களின் மனநிம்மதிக்காக சுத்தமான முறையில் உணவு தயாரிப்பு.",
+        about_title_1: "பாரம்பரியத்தில் வேரூன்றிய:",
+        about_title_2: "சுவை மற்றும் அன்பின் அடையாளம்",
+        about_badge: "டிபன் சென்டராகத் தொடக்கம்",
+        about_p1: "இது அனைத்தும் 2010-ல் ஒரு சிறிய டிபன் சென்டராகத் தொடங்கியது - என் தந்தை நடத்திய எளிய கடை. ஒவ்வொரு உணவும் எங்கள் வீட்டு சமையலறை சுவையுடன் தயாரிக்கப்பட்டது.",
+        about_btn: "முழு கதை",
+        menu_main_title: "எங்கள் சுவையான மெனு",
+        menu_main_desc: "எங்கள் சிறப்பு கேட்டரிங் தொகுப்புகள் மற்றும் மாலை நேர டிபன் மெனுவை இங்கே காணலாம்.",
+        m_cat_title: "விசேஷங்கள் பட்டியல்",
+        m_cat_1_t: "திருமண விருந்து",
+        m_cat_1_d: "24-க்கும் மேற்பட்ட பாரம்பரிய உணவுகளுடன் கூடிய முழு திருமண விருந்து.",
+        m_cat_2_t: "வளைகாப்பு விசேஷம்",
+        m_cat_2_d: "5 அல்லது 7 வகை கலவை சாதங்கள் மற்றும் பாரம்பரிய இனிப்புகள்.",
+        m_cat_3_t: "திருவிழா சிறப்புகள்",
+        m_cat_3_d: "கோவிந்தா மற்றும் சித்திரை திருவிழாக்களுக்கான மங்கலகரமான உணவுகள்.",
+        m_cat_4_t: "நிச்சயதார்த்தம்",
+        m_cat_4_d: "சிறப்பு டிபன் அல்லது மதிய உணவு வகைகள்.",
+        m_cat_5_t: "மஞ்சள் நீராட்டு விழா",
+        m_cat_5_d: "பிரம்மாண்டமான பாரம்பரிய விருந்து.",
+        m_cat_6_t: "புதுமனை புகுவிழா",
+        m_cat_6_d: "கிருகப்பிரவேசத்திற்கான தெய்வீக சைவ விருந்து.",
+        m_cat_7_t: "காது குத்து விழா",
+        m_cat_7_d: "காது குத்து விழாவிற்கான பாரம்பரிய உணவு.",
+        m_cat_8_t: "பிறந்தநாள் விழா",
+        m_cat_8_d: "குழந்தைகள் மற்றும் பெரியவர்களுக்கான சுவையான விருந்து.",
+        m_cat_9_t: "சஷ்டியப்தபூர்த்தி / சதாபிஷேகம்",
+        m_cat_9_d: "60 மற்றும் 80 ஆம் கல்யாண விழாவிற்கான சிறப்பு சமையல்.",
+        m_cat_btn: "நிகழ்ச்சிக்கு முன்பதிவு செய்ய",
+        m_hot_title: "சுதர்சன் டிபன் சென்டர்",
+        m_hot_badge: "தினமும் மாலை 5 - 10 மணி",
+        tbl_item: "உணவு பெயர்",
+        tbl_price: "விலை (₹)",
+        s_wedding_t: "பிரம்மாண்ட திருமணங்கள்",
+        s_wedding_d: "அரச விருந்தோம்பல் மற்றும் மிகுந்த சுகாதாரத்துடன் கூடிய பாரம்பரிய விருந்து.",
+        s_baby_t: "வளைகாப்பு விசேஷங்கள்",
+        s_baby_d: "சத்தான மற்றும் தூய்மையான சுவைகளுடன் கூடிய பாரம்பரிய வளைகாப்பு மெனு.",
+        s_fest_t: "திருவிழா சிறப்புகள்",
+        s_fest_d: "அனைத்து கோவில் மற்றும் குடும்ப விசேஷங்களுக்கான மங்கலகரமான உணவுகள்.",
+        opt_event: "நிகழ்ச்சி வகையைத் தேர்ந்தெடுக்கவும்",
+        footer_desc: "உண்மையான சுவை, விதிவிலக்கான சுகாதாரம். 2010 முதல் உங்கள் விசேஷங்களில் எங்களுடன்.",
+        footer_copy: "அனைத்து உரிமைகளும் பாதுகாக்கப்பட்டவை.",
+        footer_phone: "வாட்ஸ்அப்: +91 6380311973",
+        story_title: "எங்கள் பயணம் - 2010 முதல்",
+        story_p1: "சுதர்சன் கேட்டரிங் 2010 ஆம் ஆண்டில் என் தந்தையாரால் தொடங்கப்பட்ட ஒரு சிறிய டிபன் சென்டர் ஆகும்.",
+        story_p2: "எங்கள் உணவின் தரம் மற்றும் சுவை குறித்த செய்தி பரவியதால், நாங்கள் கேட்டரிங் சேவையைத் தொடங்கினோம்.",
+        story_p3: "இன்று, நாங்கள் திருமணம், வளைகாப்பு மற்றும் திருவிழாக்களுக்குச் சிறந்த முறையில் உணவு வழங்குகிறோம்."
+      }
+    };
 
-    <!-- Contact Form (Mobile Optimized) -->
-    <section id="contact" class="py-16 md:py-24 bg-gray-50">
-        <div class="max-w-xl mx-auto px-4">
-            <div class="bg-white rounded-3xl shadow-xl p-8 border border-gray-100">
-                <h2 class="text-2xl md:text-3xl font-bold text-center mb-8" data-key="nav_book">Book Now</h2>
-                <form id="whatsapp-booking-form" class="space-y-4">
-                    <input type="text" id="cust-name" placeholder="Name" required class="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-red-800 outline-none transition-all text-sm">
-                    <input type="tel" id="cust-phone" placeholder="Phone" required class="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-red-800 outline-none transition-all text-sm">
-                    <select id="cust-event" class="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-red-800 outline-none transition-all text-sm appearance-none bg-white">
-                        <option value="" disabled selected data-key="opt_event">Select Event Type</option>
-                        <option value="Wedding">Wedding</option>
-                        <option value="Baby Shower">Baby Shower</option>
-                        <option value="Festival">Festival</option>
-                    </select>
-                    <button type="button" onclick="sendWhatsAppBooking()" class="w-full bg-red-800 text-white py-4 rounded-xl font-bold hover:bg-red-900 transition-all shadow-md mt-4" data-key="nav_book">Book Now</button>
-                </form>
-            </div>
-        </div>
-    </section>
+    let currentLang = 'en';
 
-    <!-- Footer -->
-    <footer class="bg-gray-900 text-gray-400 pt-16 pb-10">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <div class="text-xl md:text-2xl font-bold text-white mb-6 tracking-wide">
-                <span data-key="brand_name">SUDHARSAN CATERING</span>
-            </div>
-            <p class="mb-8 max-w-lg mx-auto text-xs md:text-sm px-4" data-key="footer_desc">Authentic flavor, exceptional hygiene. From father's tiffin center in 2010 to your grand celebrations today.</p>
-            <div class="flex justify-center space-x-8 mb-12 text-2xl">
-                <a href="#" class="hover:text-yellow-500 transition-colors"><i class="fab fa-facebook"></i></a>
-                <a href="#" class="hover:text-yellow-500 transition-colors"><i class="fab fa-instagram"></i></a>
-                <a href="https://wa.me/916380311973" class="hover:text-yellow-500 transition-colors"><i class="fab fa-whatsapp"></i></a>
-            </div>
-            <div class="border-t border-gray-800 pt-8 text-[10px] md:text-xs">
-                <p>&copy; 2024 Sudharsan Catering. <span data-key="footer_copy">All Rights Reserved.</span></p>
-                <p class="mt-3 text-yellow-600 font-bold" data-key="footer_phone">WhatsApp: +91 6380311973</p>
-            </div>
-        </div>
-    </footer>
+    // Background Slideshow Logic
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.contact-slide');
+    function cycleSlides() {
+        slides[currentSlide].classList.remove('active');
+        currentSlide = (currentSlide + 1) % slides.length;
+        slides[currentSlide].classList.add('active');
+    }
+    setInterval(cycleSlides, 4000);
 
-    <!-- Floating Action Button -->
-    <a href="https://wa.me/916380311973" target="_blank" class="whatsapp-float md:hidden" aria-label="WhatsApp Contact">
-        <i class="fab fa-whatsapp"></i>
-    </a>
+    function renderHotelMenu() {
+      const container = document.getElementById('hotel-menu-container');
+      container.innerHTML = hotelMenuItems.map(item => `
+        <tr class="border-b border-gray-100 hover:bg-white/50 transition-colors">
+            <td class="px-4 py-3.5 text-sm font-medium text-gray-800">
+                ${currentLang === 'en' ? item.en : item.ta}
+            </td>
+            <td class="px-4 py-3.5 text-sm font-bold text-red-800 text-right">
+                ${item.price}
+            </td>
+        </tr>
+      `).join('');
+    }
 
-    <script>
-        const hotelMenuItems = [
-            { en: "Idli (2 pcs)", ta: "இட்லி (2)" },
-            { en: "Dosa (1 pc)", ta: "தோசை (1)" },
-            { en: "Special Dosa", ta: "ஸ்பெஷல் தோசை" },
-            { en: "Ghee Dosa", ta: "நெய் தோசை" },
-            { en: "Butter Dosa", ta: "பட்டர் தோசை" },
-            { en: "Onion Uthappam", ta: "ஆனியன் ஊத்தப்பம்" },
-            { en: "Onion Dosa", ta: "ஆனியன் தோசை" },
-            { en: "Rava Dosa", ta: "ரவா தோசை" },
-            { en: "Onion Rava Dosa", ta: "ஆனியன் ரவா தோசை" },
-            { en: "Podi Dosa", ta: "பொடி தோசை" },
-            { en: "Lemon Pongal", ta: "லெமன் பொங்கல்" },
-            { en: "Ven Pongal", ta: "வெண் பொங்கல்" },
-            { en: "Tomato Pongal", ta: "தக்காளி பொங்கல்" },
-            { en: "Puliotharai", ta: "புளியோதரை" },
-            { en: "Mushroom Biryani", ta: "காளான் பிரியாணி" },
-            { en: "Chappathi (1 pc)", ta: "சப்பாத்தி (1)" },
-            { en: "Poori Masala Set", ta: "பூரி மசால் செட்" },
-            { en: "Sonapuri", ta: "சோனாபுரி" },
-            { en: "Parotta (1 pc)", ta: "புரோட்டா (1)" },
-            { en: "Chilli Parotta", ta: "சில்லி புரோட்டா" },
-            { en: "Piece Parotta", ta: "பீஸ் புரோட்டா" },
-            { en: "Mushroom Chappathi", ta: "காளான் சப்பாத்தி" },
-            { en: "Paneer Chappathi", ta: "பன்னீர் சப்பாத்தி" },
-            { en: "Mushroom Parotta", ta: "காளான் புரோட்டா" },
-            { en: "Paneer Parotta", ta: "பன்னீர் புரோட்டா" },
-            { en: "Paneer Piece Parotta", ta: "பன்னீர் பீஸ் புரோட்டா" },
-            { en: "Mushroom Piece Parotta", ta: "காளான் பீஸ் புரோட்டா" },
-            { en: "Chilli Idli", ta: "சில்லி இட்லி" },
-            { en: "Chilli Chappathi", ta: "சில்லி சப்பாத்தி" },
-            { en: "Kothu Chappathi", ta: "கொத்து சப்பாத்தி" },
-            { en: "Butter Chappathi", ta: "பட்டர் சப்பாத்தி" },
-            { en: "Sambar Vada", ta: "சாம்பார் வடை" },
-            { en: "Sambar Vada (Parcel)", ta: "சாம்பார் வடை (பார்சல்)" },
-            { en: "Kuska", ta: "குஸ்கா" },
-            { en: "Veg Biryani", ta: "வெஜிடபிள் பிரியாணி" },
-            { en: "Paneer Dosa", ta: "பன்னீர் தோசை" },
-            { en: "Vada", ta: "வடை" }
-        ];
-
-        const translations = {
-            en: {
-                brand_name: "SUDHARSAN CATERING",
-                nav_home: "Home",
-                nav_roots: "Our Roots",
-                nav_services: "Specialties",
-                nav_menu: "Menu",
-                nav_book: "Book Now",
-                hero_since: "Since 2010",
-                hero_title_1: "Pure Authentic Flavor",
-                hero_title_2: "Unmatched Hygiene",
-                hero_desc: "Serving the most authentic tastes for your auspicious celebrations with a guarantee of 100% hygiene.",
-                hero_btn_2: "Book Consultation",
-                high_1_t: "Authentic Flavors",
-                high_1_d: "Original spices and traditional recipes passed down since 2010.",
-                high_2_t: "Superior Hygiene",
-                high_2_d: "Safe, clean, and sanitized food preparation for your peace of mind.",
-                about_badge: "Tiffin Center Beginnings",
-                about_title_1: "Rooted in Tradition:",
-                about_title_2: "A Legacy of Taste & Care",
-                about_p1: "It all started in 2010 as a small tiffin center—a humble shop run by my father. Every dish was crafted with the same authentic flavor that defined our home kitchen.",
-                about_p2: "Word of our quality and strict hygiene spread quickly. The small shop grew faster than we imagined, attracting people from all over. Today, we carry that same passion for purity into every event we cater.",
-                about_btn: "Our Full Story",
-                menu_main_title: "Our Delicious Menu",
-                menu_main_desc: "Explore our specialized catering packages and our authentic evening tiffin menu.",
-                m_cat_title: "Premium Catering",
-                m_cat_1_t: "Wedding Special",
-                m_cat_1_d: "Full-course traditional feast with over 24 authentic items.",
-                m_cat_2_t: "Baby Shower (Valaikappu)",
-                m_cat_2_d: "Specialized 5 or 7 varieties of variety rice and traditional sweets.",
-                m_cat_3_t: "Festival Special",
-                m_cat_3_d: "Auspicious meals for Govindha and Chithirai Thiruvizha festivals.",
-                m_cat_btn: "Request Quote for Event",
-                m_hot_title: "Evening Tiffin Center",
-                m_hot_badge: "Evening Only",
-                s_wedding_t: "Grand Weddings",
-                s_wedding_d: "Authentic feasts served with royal hospitality and surgical hygiene.",
-                s_baby_t: "Baby Showers",
-                s_baby_d: "Specializing in traditional Valaikappu menus with nutritious and pure flavors.",
-                s_fest_t: "Festival Specials",
-                s_fest_d: "Auspicious menus for temple festivals and celebrations.",
-                footer_desc: "Authentic flavor, exceptional hygiene. From father's tiffin center in 2010 to your grand celebrations today.",
-                footer_copy: "All Rights Reserved.",
-                footer_phone: "WhatsApp: +91 6380311973",
-                opt_event: "Select Event Type"
-            },
-            ta: {
-                brand_name: "சுதர்சன் கேட்டரிங்",
-                nav_home: "முகப்பு",
-                nav_roots: "எமது பயணம்",
-                nav_services: "எமது சிறப்புகள்",
-                nav_menu: "மெனு",
-                nav_book: "பதிவு செய்ய",
-                hero_since: "2010 முதல்",
-                hero_title_1: "உண்மையான பாரம்பரிய சுவை",
-                hero_title_2: "உயர்ந்த தரம் மற்றும் சுகாதாரம்",
-                hero_desc: "உங்களின் மங்களகரமான விழாக்களுக்கு நூறு சதவீதம் சுகாதாரமான மற்றும் உண்மையான சுவையான உணவுகள்.",
-                hero_btn_2: "ஆலோசனைக்கு அழைக்க",
-                high_1_t: "உண்மையான சுவை",
-                high_1_d: "2010 முதல் எமது கைவண்ணத்தில் பாரம்பரிய மசாலாக்களுடன் தயாராகும் உணவுகள்.",
-                high_2_t: "உயர்ந்த சுகாதாரம்",
-                high_2_d: "பாதுகாப்பான மற்றும் தூய்மையான முறையில் உணவு தயாரிப்பு.",
-                about_badge: "டிபன் சென்டர் ஆரம்பம்",
-                about_title_1: "பாரம்பரியத்தில் வேரூன்றியது:",
-                about_title_2: "சுவை மற்றும் அக்கறையின் அடையாளம்",
-                about_p1: "எங்கள் கதை 2010 இல் ஒரு சிறிய டிபன் சென்டராக தொடங்கியது—என் தந்தை நடத்திய ஒரு எளிய கடை அது. ஒவ்வொரு உணவும் எமது வீட்டுச் சுவையில் தயாரானது.",
-                about_p2: "எமது தரம் மற்றும் சுகாதாரத்தைப் பற்றி அறிந்த மக்கள் எங்களைத் தேடி வந்தனர். அந்தச் சிறிய கடை மிக வேகமாக வளர்ந்தது. இன்று, அதே தூய்மையுடன் உங்களின் அனைத்து விழாக்களுக்கும் உணவளிக்கிறோம்.",
-                about_btn: "முழு கதை",
-                menu_main_title: "எமது சுவையான மெனு",
-                menu_main_desc: "எங்கள் சிறப்பு கேட்டரிங் தொகுப்புகள் மற்றும் உண்மையான மாலை நேர டிபன் மெனுவை ஆராயுங்கள்.",
-                m_cat_title: "பிரீமியம் கேட்டரிங்",
-                m_cat_1_t: "திருமண விருந்து",
-                m_cat_1_d: "24-க்கும் மேற்பட்ட பாரம்பரிய உணவுகளுடன் கூடிய முழுமையான விருந்து.",
-                m_cat_2_t: "வளைகாப்பு",
-                m_cat_2_d: "5 அல்லது 7 வகையான வகை சாதங்கள் மற்றும் பாரம்பரிய இனிப்புகள்.",
-                m_cat_3_t: "திருவிழா சிறப்புகள்",
-                m_cat_3_d: "கோவிந்தா மற்றும் சித்திரை திருவிழாக்களுக்கான மங்களகரமான உணவுகள்.",
-                m_cat_btn: "நிகழ்ச்சிக்கான விலை கேட்க",
-                m_hot_title: "மாலை நேர டிபன் சென்டர்",
-                m_hot_badge: "மாலை மட்டும்",
-                s_wedding_t: "திருமண விழாக்கள்",
-                s_wedding_d: "ராஜ உபச்சாரம் மற்றும் உயர்ந்த சுகாதாரத்துடன் கூடிய பிரம்மாண்டமான விருந்து.",
-                s_baby_t: "வளைகாப்பு",
-                s_baby_d: "ஊட்டச்சத்துள்ள மற்றும் தூய்மையான சுவையில் பாரம்பரிய வளைகாப்பு மெனுக்கள்.",
-                s_fest_t: "திருவிழா சிறப்புகள்",
-                s_fest_d: "கோவில் திருவிழாக்கள் மற்றும் கொண்டாட்டங்களுக்கான மங்களகரமான உணவுகள்.",
-                footer_desc: "உண்மையான சுவை, உயர்ந்த சுகாதாரம். 2010-ல் தந்தையின் டிபன் சென்டரில் தொடங்கி இன்று உங்கள் இல்ல விழாக்கள் வரை.",
-                footer_copy: "அனைத்து உரிமைகளும் பாதுகாக்கப்பட்டவை.",
-                footer_phone: "வாட்ஸ்அப்: +91 6380311973",
-                opt_event: "நிகழ்ச்சியைத் தேர்ந்தெடுக்கவும்"
-            }
-        };
-
-        let currentLang = 'en';
-
-        function renderHotelMenu() {
-            const container = document.getElementById('hotel-menu-container');
-            container.innerHTML = hotelMenuItems.map(item => `
-                <div class="flex justify-between items-center py-2.5 border-b border-gray-100 px-3 rounded hover:bg-gray-50 active:bg-gray-100 transition-colors">
-                    <span class="font-medium text-gray-800 text-sm">${currentLang === 'en' ? item.en : item.ta}</span>
-                    <span class="text-red-800"><i class="fas fa-check-circle text-[10px] opacity-40"></i></span>
-                </div>
-            `).join('');
+    function updateLanguage(lang) {
+      currentLang = lang;
+      document.querySelectorAll('[data-lang]').forEach(btn => {
+        btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
+      });
+      document.querySelectorAll('[data-key]').forEach(elem => {
+        const key = elem.getAttribute('data-key');
+        if (translations[lang] && translations[lang][key]) {
+          elem.innerText = translations[lang][key];
         }
+      });
+      renderHotelMenu();
+    }
 
-        function changeLanguage(lang) {
-            currentLang = lang;
-            document.querySelectorAll('[data-key]').forEach(elem => {
-                const key = elem.getAttribute('data-key');
-                if (translations[lang][key]) {
-                    elem.innerText = translations[lang][key];
-                }
-            });
-            document.querySelectorAll('.lang-btn, .lang-btn-mob').forEach(btn => btn.classList.remove('active', 'bg-red-800', 'text-white'));
-            
-            // Highlight active buttons
-            const desktopBtn = document.getElementById(`btn-${lang}`);
-            if(desktopBtn) desktopBtn.classList.add('active');
+    function initLanguageControls() {
+      document.querySelectorAll('[data-lang]').forEach(btn => {
+        btn.addEventListener('click', () => updateLanguage(btn.getAttribute('data-lang')));
+      });
+    }
 
-            document.getElementById('mobile-menu').classList.add('hidden');
-            renderHotelMenu();
-        }
-
-        function reveal() {
-            const reveals = document.querySelectorAll(".reveal");
-            for (let i = 0; i < reveals.length; i++) {
-                const windowHeight = window.innerHeight;
-                const elementTop = reveals[i].getBoundingClientRect().top;
-                const elementVisible = 100;
-                if (elementTop < windowHeight - elementVisible) {
-                    reveals[i].classList.add("active");
-                }
-            }
-        }
-
-        // --- NEW WHATSAPP BOOKING LOGIC ---
-        function sendWhatsAppBooking() {
-            const name = document.getElementById('cust-name').value.trim();
-            const phone = document.getElementById('cust-phone').value.trim();
-            const event = document.getElementById('cust-event').value;
-            const phoneNumber = "916380311973";
-
-            if (!name || !phone || !event) {
-                const alertMsg = currentLang === 'en' ? "Please fill in all details." : "தயவுசெய்து அனைத்து விவரங்களையும் நிரப்பவும்.";
-                alert(alertMsg);
-                return;
-            }
-
-            const message = currentLang === 'en' 
-                ? `Hello Sudharsan Catering,\n\nI would like to book an inquiry.\n*Name:* ${name}\n*Phone:* ${phone}\n*Event:* ${event}\n\nPlease contact me for further details.`
-                : `வணக்கம் சுதர்சன் கேட்டரிங்,\n\nஎனது முன்பதிவு விவரம்:\n*பெயர்:* ${name}\n*தொலைபேசி:* ${phone}\n*நிகழ்ச்சி:* ${event}\n\nமேலும் விவரங்களுக்கு என்னை தொடர்பு கொள்ளவும்.`;
-
-            const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
-            window.open(whatsappUrl, '_blank');
-        }
-
-        window.addEventListener("scroll", reveal);
-        window.onload = () => {
-            reveal();
-            renderHotelMenu();
-        };
-
-        // Mobile Menu Toggle
-        document.getElementById('mobile-menu-btn').addEventListener('click', (e) => {
-            e.stopPropagation();
-            document.getElementById('mobile-menu').classList.toggle('hidden');
+    function initRevealObserver() {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+          }
         });
+      }, { threshold: 0.1 });
+      document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    }
 
-        // Close menu on click outside
-        window.onclick = function(event) {
-            if (!event.target.matches('#mobile-menu-btn') && !event.target.matches('.fas')) {
-                document.getElementById('mobile-menu').classList.add('hidden');
-            }
-        }
-    </script>
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    mobileMenuBtn.addEventListener('click', () => {
+      const isHidden = mobileMenu.classList.toggle('hidden');
+      mobileMenuBtn.innerHTML = isHidden ? '<i class="fas fa-bars text-xl"></i>' : '<i class="fas fa-times text-xl"></i>';
+    });
+    document.querySelectorAll('#mobile-menu a').forEach(link => {
+        link.addEventListener('click', () => {
+            mobileMenu.classList.add('hidden');
+            mobileMenuBtn.innerHTML = '<i class="fas fa-bars text-xl"></i>';
+        });
+    });
+
+    const storyModal = document.getElementById('story-modal');
+    function openStoryModal() {
+      storyModal.classList.remove('hidden');
+      storyModal.classList.add('flex');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeStoryModal() {
+      storyModal.classList.add('hidden');
+      storyModal.classList.remove('flex');
+      document.body.style.overflow = '';
+    }
+
+    function sendWhatsAppBooking() {
+      const name = document.getElementById('cust-name').value.trim();
+      const phone = document.getElementById('cust-phone').value.trim();
+      const eventType = document.getElementById('cust-event').value;
+      if (!name || !phone || !eventType) {
+        alert(currentLang === 'en' ? "Please fill in all details." : "தயவுசெய்து அனைத்து விவரங்களையும் நிரப்பவும்.");
+        return;
+      }
+      const msg = currentLang === 'en' 
+        ? `Hello Sudharsan Catering,%0A%0AI would like to book for:%0A*Name:* ${name}%0A*Phone:* ${phone}%0A*Event:* ${eventType}`
+        : `வணக்கம் சுதர்சன் கேட்டரிங்,%0A%0Aமுன்பதிவு விவரம்:%0A*பெயர்:* ${name}%0A*தொலைபேசி:* ${phone}%0A*நிகழ்ச்சி:* ${eventType}`;
+      window.open(`https://wa.me/916380311973?text=${msg}`, '_blank');
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      initLanguageControls();
+      renderHotelMenu();
+      initRevealObserver();
+    });
+  </script>
 </body>
 </html>
